@@ -77,41 +77,66 @@
                 <div class="skills">
                     Skills
                 </div>
-                <div class="skill-set-div">
-                    <div class="individual-skill">
-                        <div class="skill-name">Java</div>
-                        <mat-progress-spinner mode="indeterminate" value="80">
-                        </mat-progress-spinner>
-                        <div style="position:relative; top: -60px; left: 30px;"> 80% </div>
-                    </div>
-                </div>
-                <div cdkDropListGroup>
-                    <div class="example-container">
-                        <div cdkDropList [cdkDropListData]="todo" class="example-list" (cdkDropListDropped)="dropSkills($event)">
-                            <div class="example-box" *ngFor="let item of todo" cdkDrag>
-                                <div class="individual-skill">
-                                    <div class="skill-name">{{item}}</div>
-                                    <mat-progress-spinner mode="indeterminate" value="80">
-                                    </mat-progress-spinner>
-                                    <div style="position:relative; top: -60px; left: 30px;"> 80% </div>
-                                </div>
+                <div class="example-container">
+                    <!-- <h2>Skill1</h2> -->
+
+                    <div cdkDropList #skill1List="cdkDropList" [cdkDropListData]="skill1" [cdkDropListConnectedTo]="[skill2List]" class="example-list" (cdkDropListDropped)="dropSkills($event)">
+                        <div class="example-box" *ngFor="let item of skill1" cdkDrag>
+                            <div class="individual-skill">
+                                <div class="skill-name">{{item}}</div>
+                                <mat-progress-spinner mode="determinate" value="{{getValue(item)}}">
+                                </mat-progress-spinner>
+                                <div style="position:relative; top: -60px; left: 30px;"> {{getValue(item)}}% </div>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="example-container">
-                        <div cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="dropSkills($event)">
-                            <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+                <div class="example-container">
+                    <!-- <h2>skill2</h2> -->
+
+                    <div cdkDropList #skill2List="cdkDropList" [cdkDropListData]="skill2" [cdkDropListConnectedTo]="[skill1List, skill3List]" class="example-list" (cdkDropListDropped)="dropSkills($event)">
+                        <div class="example-box" *ngFor="let item of skill2" cdkDrag>
+                            <div class="individual-skill">
+                                <div class="skill-name">{{item}}</div>
+                                <mat-progress-spinner mode="determinate" value="{{getValue(item)}}">
+                                </mat-progress-spinner>
+                                <div style="position:relative; top: -60px; left: 30px;"> {{getValue(item)}}% </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
+                <div class="example-container">
+                    <!-- <h2>skill3</h2> -->
+
+                    <div cdkDropList #skill3List="cdkDropList" [cdkDropListData]="skill3" [cdkDropListConnectedTo]="[skill2List,skill4List]" class="example-list" (cdkDropListDropped)="dropSkills($event)">
+                        <div class="example-box" *ngFor="let item of skill3" cdkDrag>
+                            <div class="individual-skill">
+                                <div class="skill-name">{{item}}</div>
+                                <mat-progress-spinner mode="determinate" value="{{getValue(item)}}">
+                                </mat-progress-spinner>
+                                <div style="position:relative; top: -60px; left: 30px;"> {{getValue(item)}}% </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-container">
+                    <!-- <h2>skill4</h2> -->
+
+                    <div cdkDropList #skill4List="cdkDropList" [cdkDropListData]="skill4" [cdkDropListConnectedTo]="[skill3List]" class="example-list" (cdkDropListDropped)="dropSkills($event)">
+                        <div class="example-box" *ngFor="let item of skill4" cdkDrag>
+                            <div class="individual-skill">
+                                <div class="skill-name">{{item}}</div>
+                                <mat-progress-spinner mode="determinate" value="{{getValue(item)}}">
+                                </mat-progress-spinner>
+                                <div style="position:relative; top: -60px; left: 30px;"> {{getValue(item)}}% </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-
         </div>
-
-
-
     </mat-card-content>
 </mat-card>

@@ -24,15 +24,69 @@ export class HomeComponent implements OnInit {
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
+  private keyValue = new Map();
+  private skill1: String[];
+  private skill2: String[];
+  private skill3: String[];
+  private skill4: String[];
+  private timePeriods: String[];
   constructor() { }
 
   ngOnInit() {
+    this.init();
+  }
+  private init() {
+    this.timePeriods = [
+      this.s1, ''
+    ];
+    this.skill1 = [
+      'Java',
+      'HTML',
+      'CSS',
+      'JS'
 
+    ];
+    this.skill2 = [
+      'Spring',
+      'Hibernate',
+      'Rest'
+
+    ];
+
+    this.skill3 = [
+      'Angular',
+      'Typescript',
+      'Services'
+    ];
+
+    this.skill4 = [
+      'Web Services',
+      'Micro Services',
+      'Eclipse'
+    ];
+
+    this.fillKeyValue();
   }
 
-  timePeriods = [
-    this.s1, ''
-  ];
+  private fillKeyValue() {
+    this.keyValue.set('Java', 90);
+    this.keyValue.set('HTML', 20);
+    this.keyValue.set('CSS', 30);
+    this.keyValue.set('JS', 40);
+    this.keyValue.set('Spring', 50);
+    this.keyValue.set('Hibernate', 60);
+    this.keyValue.set('Web Services', 70);
+    this.keyValue.set('Rest', 80);
+    this.keyValue.set('Micro Services', 90);
+    this.keyValue.set('Angular', 85);
+    this.keyValue.set('Typescript', 75);
+    this.keyValue.set('Services', 65);
+    this.keyValue.set('Eclipse', 55);
+  }
+
+  private getValue(key) {
+    return this.keyValue.get(key);
+  }
 
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.timePeriods, event.previousIndex, event.currentIndex);
@@ -49,21 +103,6 @@ export class HomeComponent implements OnInit {
       this.isRightSideObjective = false;
     }
   }
-
-  todo = [
-    'Java',
-    'HTML',
-    'CSS',
-    'JS'
-  ];
-
-  done = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
-  ];
 
   dropSkills(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
