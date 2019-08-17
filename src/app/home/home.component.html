@@ -1,0 +1,117 @@
+<mat-card class="resume-card">
+    <div cdkDropList cdkDropListOrientation="horizontal" class="personal-info" (cdkDropListDropped)="drop($event)">
+        <div class="personal-info-dif" *ngFor="let timePeriod of timePeriods" cdkDrag [innerHTML]="timePeriod"></div>
+    </div>
+    <mat-card-content>
+        <div class="objective-div-left" *ngIf="isLeftSideObjective">
+            {{objective}}
+        </div>
+        <div class="objective-div-right" *ngIf="isRightSideObjective">
+            {{objective}}
+        </div>
+        <div class="work-exp-left">
+            <div class="work-exp-div">
+                Work Experience
+            </div>
+            <div>
+                <div class="step">
+                    <div>
+                        <div class="circle"><i class="fa fa-check"></i></div>
+                    </div>
+                    <div>
+                        <div class="title">Sr. Manager / Facebook / Aug, 2013 – present</div>
+                        <div class="caption">
+                            <div class="caption-content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur. Aliquam feugiat nec sem dapibus blandit. Nam non faucibus urna, at pulvinar nisl. Aliquam erat volutpat. Ut eget aliquet diam. In et Lorem ipsum dolor sit
+                                amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step step-active">
+                    <div>
+                        <div class="circle"></div>
+                    </div>
+                    <div>
+                        <div class="title">Manager / Amazon / July, 2012 – Aug, 2013</div>
+                        <div class="caption">
+                            <div class="caption-content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur. Aliquam feugiat nec sem dapibus blandit. Nam non faucibus urna, at pulvinar nisl. Aliquam erat volutpat. Ut eget aliquet diam. In et Lorem ipsum dolor sit
+                                amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step step-active">
+                    <div>
+                        <div class="circle"></div>
+                    </div>
+                    <div>
+                        <div class="title">
+                            Executive / MySpace / Apr, 2010 – Mar, 2011</div>
+                        <div class="caption">
+                            <div class="caption-content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur. Aliquam feugiat nec sem dapibus blandit. Nam non faucibus urna, at pulvinar nisl. Aliquam erat volutpat. Ut eget aliquet diam. In et Lorem ipsum dolor sit
+                                amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step">
+                    <div>
+                        <div class="circle"></div>
+                    </div>
+                    <div>
+                        <div class="title">Sr. Executive / Google / May, 2011 – June, 2012</div>
+                        <div class="caption">
+                            <div class="caption-content">
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur. Aliquam feugiat nec sem dapibus blandit. Nam non faucibus urna, at pulvinar nisl. Aliquam erat volutpat. Ut eget aliquet diam. In et Lorem ipsum dolor sit
+                                amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="skills-div">
+                <div class="skills">
+                    Skills
+                </div>
+                <div class="skill-set-div">
+                    <div class="individual-skill">
+                        <div class="skill-name">Java</div>
+                        <mat-progress-spinner mode="indeterminate" value="80">
+                        </mat-progress-spinner>
+                        <div style="position:relative; top: -60px; left: 30px;"> 80% </div>
+                    </div>
+                </div>
+                <div cdkDropListGroup>
+                    <div class="example-container">
+                        <div cdkDropList [cdkDropListData]="todo" class="example-list" (cdkDropListDropped)="dropSkills($event)">
+                            <div class="example-box" *ngFor="let item of todo" cdkDrag>
+                                <div class="individual-skill">
+                                    <div class="skill-name">{{item}}</div>
+                                    <mat-progress-spinner mode="indeterminate" value="80">
+                                    </mat-progress-spinner>
+                                    <div style="position:relative; top: -60px; left: 30px;"> 80% </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="example-container">
+                        <div cdkDropList [cdkDropListData]="done" class="example-list" (cdkDropListDropped)="dropSkills($event)">
+                            <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+    </mat-card-content>
+</mat-card>
