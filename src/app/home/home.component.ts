@@ -30,6 +30,9 @@ export class HomeComponent implements OnInit {
   private skill3: String[];
   private skill4: String[];
   private timePeriods: String[];
+
+  private workExperience: String[];
+  private workExperienceKeyVal = new Map();
   constructor() { }
 
   ngOnInit() {
@@ -65,6 +68,13 @@ export class HomeComponent implements OnInit {
       'Eclipse'
     ];
 
+    this.workExperience = [
+      'Sr. Manager / Facebook / Aug, 2013 – present',
+      'Manager / Amazon / July, 2012 – Aug, 2013',
+      'Executive / MySpace / Apr, 2010 – Mar, 2011',
+      'Sr. Executive / Google / May, 2011 – June, 2012'
+    ];
+
     this.fillKeyValue();
   }
 
@@ -82,10 +92,18 @@ export class HomeComponent implements OnInit {
     this.keyValue.set('Typescript', 75);
     this.keyValue.set('Services', 65);
     this.keyValue.set('Eclipse', 55);
+    this.workExperienceKeyVal.set('Sr. Manager / Facebook / Aug, 2013 – present', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur. Aliquam feugiat nec sem dapibus blandit. Nam non faucibus urna, at pulvinar nisl. Aliquam erat volutpat. Ut eget aliquet diam. In et Lorem ipsum dolor sit    amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur.');
+    this.workExperienceKeyVal.set('Manager / Amazon / July, 2012 – Aug, 2013', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur. Aliquam feugiat nec sem dapibus blandit. Nam non faucibus urna, at pulvinar nisl. Aliquam erat volutpat. Ut eget aliquet diam. In et Lorem ipsum dolor sit   amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur.');
+    this.workExperienceKeyVal.set('Executive / MySpace / Apr, 2010 – Mar, 2011', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur. Aliquam feugiat nec sem dapibus blandit. Nam non faucibus urna, at pulvinar nisl. Aliquam erat volutpat. Ut eget aliquet diam. In et Lorem ipsum dolor sit   amet, consecteturgdfgdjf jfghjadj gfagdhf asgfgasjd fgasgfj vfjg safsagf sfagf gyfgdjf gfsfgdaga gfsgfjgaj fgsfgsfg gffasgf sfdgfgjg ygfsagfj fsafdgjuasv sadfsfd sdafgtfdsa sfdafuyfdgwuy sfafufasuyf adipiscing elit. Nam    porttitor dapibus ipsum ut efficitur.');
+    this.workExperienceKeyVal.set('Sr. Executive / Google / May, 2011 – June, 2012', ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur. Aliquam feugiat nec sem dapibus blandit. Nam non faucibus urna, at pulvinar nisl. Aliquam erat volutpat. Ut eget aliquet diam. In et Lorem ipsum dolor sit   amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur.');
   }
 
   private getValue(key) {
     return this.keyValue.get(key);
+  }
+
+  private getExpValue(key) {
+    return this.workExperienceKeyVal.get(key);
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -113,6 +131,10 @@ export class HomeComponent implements OnInit {
         event.previousIndex,
         event.currentIndex);
     }
+  }
+
+  dropExperience(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.workExperience, event.previousIndex, event.currentIndex);
   }
 
 }

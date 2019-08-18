@@ -9,79 +9,40 @@
         <div class="objective-div-right" *ngIf="isRightSideObjective">
             {{objective}}
         </div>
-        <div class="work-exp-left">
-            <div class="work-exp-div">
-                Work Experience
-            </div>
-            <div>
-                <div class="step">
-                    <div>
-                        <div class="circle"><i class="fa fa-check"></i></div>
-                    </div>
-                    <div>
-                        <div class="title">Sr. Manager / Facebook / Aug, 2013 – present</div>
-                        <div class="caption">
-                            <div class="caption-content">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur. Aliquam feugiat nec sem dapibus blandit. Nam non faucibus urna, at pulvinar nisl. Aliquam erat volutpat. Ut eget aliquet diam. In et Lorem ipsum dolor sit
-                                amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur.
+        <div class="body-left">
+            <div class="experience-div">
+                <div class="work-exp-div">
+                    Work Experience
+                </div>
+                <div>
+                    <div cdkDropList class="example-list" (cdkDropListDropped)="dropExperience($event)">
+                        <div class="example-box" *ngFor="let item of workExperience" cdkDrag>
+                            <div class="step">
+                                <div>
+                                    <div class="circle"></div>
+                                </div>
+                                <div>
+                                    <div class="title">{{item}}</div>
+                                    <div class="caption">
+                                        <div class="caption-content">
+                                            {{getExpValue(item)}}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="step step-active">
-                    <div>
-                        <div class="circle"></div>
-                    </div>
-                    <div>
-                        <div class="title">Manager / Amazon / July, 2012 – Aug, 2013</div>
-                        <div class="caption">
-                            <div class="caption-content">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur. Aliquam feugiat nec sem dapibus blandit. Nam non faucibus urna, at pulvinar nisl. Aliquam erat volutpat. Ut eget aliquet diam. In et Lorem ipsum dolor sit
-                                amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="step step-active">
-                    <div>
-                        <div class="circle"></div>
-                    </div>
-                    <div>
-                        <div class="title">
-                            Executive / MySpace / Apr, 2010 – Mar, 2011</div>
-                        <div class="caption">
-                            <div class="caption-content">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur. Aliquam feugiat nec sem dapibus blandit. Nam non faucibus urna, at pulvinar nisl. Aliquam erat volutpat. Ut eget aliquet diam. In et Lorem ipsum dolor sit
-                                amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="step">
-                    <div>
-                        <div class="circle"></div>
-                    </div>
-                    <div>
-                        <div class="title">Sr. Executive / Google / May, 2011 – June, 2012</div>
-                        <div class="caption">
-                            <div class="caption-content">
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur. Aliquam feugiat nec sem dapibus blandit. Nam non faucibus urna, at pulvinar nisl. Aliquam erat volutpat. Ut eget aliquet diam. In et Lorem ipsum dolor sit
-                                amet, consectetur adipiscing elit. Nam porttitor dapibus ipsum ut efficitur.
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
+
+                </div>
             </div>
             <div class="skills-div">
                 <div class="skills">
                     Skills
                 </div>
-                <div class="example-container">
-                    <!-- <h2>Skill1</h2> -->
-
-                    <div cdkDropList #skill1List="cdkDropList" [cdkDropListData]="skill1" [cdkDropListConnectedTo]="[skill2List]" class="example-list" (cdkDropListDropped)="dropSkills($event)">
-                        <div class="example-box" *ngFor="let item of skill1" cdkDrag>
+                <div class="skill-container">
+                    <div cdkDropList #skill1List="cdkDropList" [cdkDropListData]="skill1" [cdkDropListConnectedTo]="[skill2List]" class="skill-list" (cdkDropListDropped)="dropSkills($event)">
+                        <div class="skill-box" *ngFor="let item of skill1" cdkDrag>
                             <div class="individual-skill">
                                 <div class="skill-name">{{item}}</div>
                                 <mat-progress-spinner mode="determinate" value="{{getValue(item)}}">
@@ -92,11 +53,9 @@
                     </div>
                 </div>
 
-                <div class="example-container">
-                    <!-- <h2>skill2</h2> -->
-
-                    <div cdkDropList #skill2List="cdkDropList" [cdkDropListData]="skill2" [cdkDropListConnectedTo]="[skill1List, skill3List]" class="example-list" (cdkDropListDropped)="dropSkills($event)">
-                        <div class="example-box" *ngFor="let item of skill2" cdkDrag>
+                <div class="skill-container">
+                    <div cdkDropList #skill2List="cdkDropList" [cdkDropListData]="skill2" [cdkDropListConnectedTo]="[skill1List, skill3List]" class="skill-list" (cdkDropListDropped)="dropSkills($event)">
+                        <div class="skill-box" *ngFor="let item of skill2" cdkDrag>
                             <div class="individual-skill">
                                 <div class="skill-name">{{item}}</div>
                                 <mat-progress-spinner mode="determinate" value="{{getValue(item)}}">
@@ -107,11 +66,9 @@
                     </div>
                 </div>
 
-                <div class="example-container">
-                    <!-- <h2>skill3</h2> -->
-
-                    <div cdkDropList #skill3List="cdkDropList" [cdkDropListData]="skill3" [cdkDropListConnectedTo]="[skill2List,skill4List]" class="example-list" (cdkDropListDropped)="dropSkills($event)">
-                        <div class="example-box" *ngFor="let item of skill3" cdkDrag>
+                <div class="skill-container">
+                    <div cdkDropList #skill3List="cdkDropList" [cdkDropListData]="skill3" [cdkDropListConnectedTo]="[skill2List,skill4List]" class="skill-list" (cdkDropListDropped)="dropSkills($event)">
+                        <div class="skill-box" *ngFor="let item of skill3" cdkDrag>
                             <div class="individual-skill">
                                 <div class="skill-name">{{item}}</div>
                                 <mat-progress-spinner mode="determinate" value="{{getValue(item)}}">
@@ -122,11 +79,9 @@
                     </div>
                 </div>
 
-                <div class="example-container">
-                    <!-- <h2>skill4</h2> -->
-
-                    <div cdkDropList #skill4List="cdkDropList" [cdkDropListData]="skill4" [cdkDropListConnectedTo]="[skill3List]" class="example-list" (cdkDropListDropped)="dropSkills($event)">
-                        <div class="example-box" *ngFor="let item of skill4" cdkDrag>
+                <div class="skill-container">
+                    <div cdkDropList #skill4List="cdkDropList" [cdkDropListData]="skill4" [cdkDropListConnectedTo]="[skill3List]" class="skill-list" (cdkDropListDropped)="dropSkills($event)">
+                        <div class="skill-box" *ngFor="let item of skill4" cdkDrag>
                             <div class="individual-skill">
                                 <div class="skill-name">{{item}}</div>
                                 <mat-progress-spinner mode="determinate" value="{{getValue(item)}}">
